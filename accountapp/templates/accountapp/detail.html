@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+  <div>
+    <div style="text-align: center; max-width: 500px; margin: 3rem auto;">
+      {% if target_user.profile %}
+        <img src="{{ target_user.profile.image.url }}" alt="target_user.username"
+             style="height: 10rem; width:10rem;border-radius:6rem; margin-bottom: 3rem;object-fit: cover;">
+        <h2 style="font-family: 'NanumSquareB'">
+          {{ target_user.profile.nickname }}
+          {% if target_user == user %}
+            <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}" class="material-icons"
+               style="box-shadow:0 0 4px #ccc; border-radius: 3rem; padding: .4rem;">edit</a>
+          {% endif %}
+        </h2>
+      {% else %}
+        {% if target_user == user %}
+          <a href="{% url 'profileapp:create' %}">
+            <h2 class="btn btn-primary rounded-pill col-6 mt-3" font-family: 'NanumSquareB'">
+            프로필 작성
+            </h2>
+          </a>
+        {% endif %}
+      {% endif %}
+
+      <h5 style="margin-bottom: 4rem;">
+        {{ target_user.profile.message }}
+      </h5>
+
+      {% if target_user == user %}
+        <a href="{% url 'accountapp:update' pk=user.pk %}" class="material-icons"
+        style="box-shadow:0 0 4px #ccc; border-radius: 3rem; margin:.5rem; padding: .4rem;">
+          settings
+        </a>
+        <a href="{% url 'accountapp:delete' pk=user.pk %}" class="material-icons"
+        style="color: rgba(255,30,30,0.7); box-shadow:0 0 4px #fcc; border-radius: 3rem;margin:.5rem;  padding: .4rem;">
+         cancel
+        </a>
+      {% endif %}
+    </div>
+    <div>
+      {% include 'snippets/list_fragment.html' with article_list=object_list %}
+    </div>
+
+  </div>
+{% endblock %}

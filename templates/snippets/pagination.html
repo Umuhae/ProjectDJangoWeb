@@ -1,0 +1,28 @@
+<div style="text-align:center; margin: 1rem 0;">
+  {% if is_paginated %}
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary rounded-pill ">
+        <span>Prev</span>
+      </a>
+    {% else %}
+      <a href="#" class="btn btn-secondary rounded-pill disabled">
+        <span>Previous</span>
+      </a>
+    {% endif %}
+
+    {% for page in page_range %}
+      <a href="?page={{ page }}" {% if page == page_obj.number %}class="btn btn-secondary rounded-pill active"
+         {% else %}class="btn btn-secondary rounded-pill"{% endif %}>{{ page }}</a>
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary rounded-pill ">
+        <span>Next</span>
+      </a>
+    {% else %}
+      <a href="#" {% if not page_obj.has_next %}class="btn btn-secondary rounded-pill disabled"{% endif %}>
+        <span>Next</span>
+      </a>
+    {% endif %}
+  {% endif %}
+</div>

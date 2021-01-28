@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+  <div style="text-align: center; max-width: 450px;" class="col-6 my-3 mx-auto">
+    <h4>Login</h4>
+    <form action="" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button class="btn btn-dark rounded-pill col-6 mt-3">Login</button>
+    </form>
+  </div>
+{% endblock %}

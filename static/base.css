@@ -1,0 +1,86 @@
+/* 헤더 영역*/
+#header {
+    text-align:center;
+}
+#header .header_logo {
+    font-family: 'Do Hyeon', sans-serif;
+  margin-left: 2rem;
+}
+#header .nav {
+    color:white;
+  display:inline-flex;
+  margin-left: 2rem;
+}
+
+/* 푸터 영역*/
+
+#footer {
+   text-align:center;
+}
+#footer .footer_logo {
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+
+.center {
+  justify-content: center;
+}
+
+
+.space-between {
+  justify-content: space-between;
+}
+
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  width: 60px;
+  height: 50px;
+  margin: 5px;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+@media screen and (max-width:500px) {
+  html {
+    font-size: 13px
+  }
+}
+
+a {
+  color:black;
+
+}
+
+a:hover {
+  color:black;
+  text-decoration: none;
+}
