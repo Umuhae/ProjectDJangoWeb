@@ -39,21 +39,31 @@
     <ul class="navbar-nav"  style="background-color: unset;">
       <li class="nav-item" >
         <a href="{% url 'articleapp:list' %}">
-          <div class="nav">Article</div>
+          <div class="nav">게시글</div>
         </a>
       </li>
+    <li class="nav-item">
+          <a href="{% url 'subscribeapp:list' %}">
+            <div class="nav">게시판</div>
+          </a>
+        </li>
+    <li class="nav-item">
+          <a href="{% url 'subscribeapp:list' %}">
+            <div class="nav">구독한 게시글</div>
+          </a>
+        </li>
       {% if not user.is_authenticated %}
         <li class="nav-item">
           <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
             <div class="nav">로그인</div>
           </a>
         </li>
-      {% else %}
         <li class="nav-item">
-          <a href="{% url 'subscribeapp:list' %}">
-            <div class="nav">구독</div>
+          <a href="{% url 'accountapp:create' %}?next={{ request.path }}">
+            <div class="nav">회원가입</div>
           </a>
         </li>
+      {% else %}
         <li class="nav-item">
           <a href="{% url 'accountapp:detail' pk=user.pk %}?next={{ request.path }}">
             <div class="nav">MyPage</div>

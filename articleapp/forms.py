@@ -7,8 +7,10 @@ from .models import Article
 class ArticleCreationForm(ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'image', 'project','content']
-
+        fields = ['title', 'image', 'project', 'content']
+        labels = {
+            'project': '게시판',
+        }
         widgets = {
             'content': SummernoteWidget(),
         }

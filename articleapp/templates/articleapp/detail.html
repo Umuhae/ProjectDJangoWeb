@@ -28,9 +28,9 @@
       {% endif %}
       <hr>
     {% for comment in target_article.comment.all %}
-      {% include 'commnetapp/detail.html' with comment=comment %}
+      {% include 'commentapp/detail.html' with comment=comment %}
     {% endfor %}
-    {% include 'commnetapp/create.html' with article=target_article %}
+    {% include 'commentapp/create.html' with article=target_article %}
     </div>
   </div>
 {% endblock %}
