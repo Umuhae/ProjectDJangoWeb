@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% block content %}
   <div style="text-align: center; max-width: 500px; margin: 3rem auto;">
-    <h3>Update Profile</h3>
+    <h3>프로필 변경</h3>
     <form action="{% url 'profileapp:update' pk=target_profile.pk %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {% bootstrap_form form %}
