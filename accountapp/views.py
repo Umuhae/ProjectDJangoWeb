@@ -25,11 +25,11 @@ class CreateUserForm(CreateView):
 class AccountDetailView(DetailView):
     model = get_user_model()
     context_object_name = 'target_user'
-    template_name = 'accountApp/detail.html'
+    template_name = 'accountapp/detail.html'
 
     def get_context_data(self, **kwargs):
         object_list = Article.objects.filter(writer=self.get_object())
-        return super(AccountDetailView,self).get_context_data(object_list=object_list)
+        return super(AccountDetailView, self).get_context_data(object_list=object_list)
 
 
 @method_decorator(has_ownership, 'get')
