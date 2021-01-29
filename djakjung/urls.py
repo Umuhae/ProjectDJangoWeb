@@ -1,9 +1,9 @@
+from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
 from articleapp.views import ArticleListView
-from djakjung import settings
 
 urlpatterns = [
                   path('', ArticleListView.as_view(), name='home'),
