@@ -5,6 +5,11 @@ from django_summernote.widgets import SummernoteWidget
 from .models import Article
 
 class ArticleCreationForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ArticleCreationForm, self).__init__(*args, **kwargs)
+        self.fields['image'].required = True
+
+
     class Meta:
         model = Article
         fields = ['title', 'image', 'project', 'content']
