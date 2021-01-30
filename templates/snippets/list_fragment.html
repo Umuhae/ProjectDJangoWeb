@@ -30,6 +30,7 @@
     {% for article in article_list %}
       <a href="{% url 'articleapp:detail' pk=article.pk %}">
         {% include 'snippets/card.html' with article=article %}
+        <p class="img_text">{{ article.title }}</p>
       </a>
     {% endfor %}
   </div>
