@@ -1,5 +1,5 @@
 <div style="text-align:center; margin: 1rem 0;">
-  {% if is_paginated %}
+  {% if is_paginated %} {{ is_paginated  }}
     {% if page_obj.has_previous %}
       <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary rounded-pill ">
         <span>Prev</span>

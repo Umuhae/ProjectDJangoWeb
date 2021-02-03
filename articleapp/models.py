@@ -12,7 +12,7 @@ class Article(models.Model):
     image = models.ImageField(upload_to='article/', null=False, blank=True)
     content = models.TextField(null=True)
 
-    created_at = models.DateField(auto_created=True, null=True)
+    created_at = models.DateField(auto_now_add=True, null=True)
 
 
     def __str__(self):
