@@ -2,35 +2,55 @@
 {% load bootstrap4 %}
 {% block content %}
   <div>
-    <div style="text-align: center; max-width: 700px; margin: 3rem auto;">
-      <h1>
+    <div style=" max-width: 700px; margin: 3rem auto;">
+      <h1 style="text-align: center;">
         {{ target_article.title }}
       </h1>
-      <h3>
-        {{ target_article.writer.profile.nickname }}
+      {% if target_article.writer.pk %}
+        <h5 style="text-align: center;">
 
-      </h3>
+          작성자:
+          <a href="{% url 'accountapp:detail' pk=target_article.writer.pk %}">
+
+            {% if target_article.writer.profile.image %}
+              <img style="height: 1.7rem;
+                  width:  1.7rem;
+                  border-radius: 2rem;
+                  object-fit: cover;" src="{{ target_article.writer.profile.image.url }}"/>
+
+
+            {% endif %}
+            {% if target_article.writer.profile.nickname %}
+              {{ target_article.writer.profile.nickname }}
+            {% else %}
+              #user{{ target_article.writer.pk }}
+            {% endif %}
+          </a>
+
+        </h5>
+      {% endif %}
       <hr>
       <img style="width: 100%; border-radius: 1rem;margin:2rem 0;" src="{{ target_article.image.url }}" alt=""/>
 
       <p>
-        {{ target_article.content |safe  }}
+        {{ target_article.content |safe }}
       </p>
+      <div style="text-align: center;">
+        {% if target_article.writer == user %}
+          <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-primary rounded-pill col-3">
+            Update
+          </a>
 
-      {% if target_article.writer == user %}
-        <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-primary rounded-pill col-3">
-          Update
-        </a>
-
-        <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-danger rounded-pill col-3">
-          Delete
-        </a>
-      {% endif %}
+          <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-danger rounded-pill col-3">
+            Delete
+          </a>
+        {% endif %}
+      </div>
       <hr>
-    {% for comment in target_article.comment.all %}
-      {% include 'commnetapp/detail.html' with comment=comment %}
-    {% endfor %}
-    {% include 'commnetapp/create.html' with article=target_article %}
+      {% for comment in target_article.comment.all %}
+        {% include 'commnetapp/detail.html' with comment=comment %}
+      {% endfor %}
+      {% include 'commnetapp/create.html' with article=target_article %}
     </div>
   </div>
 {% endblock %}

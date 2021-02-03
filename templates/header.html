@@ -3,82 +3,86 @@
   <div style="background-color:#0C4B33;" class="flex-container space-between">
     <div class="header_logo"
          style=" font-size:2rem; font-weight: 300;font-family: 'Do Hyeon', sans-serif; color:white;display:flex">
-      <div style="line-height:2rem;"> Project <br/>django</div>
+      <a href="{% url 'articleapp:list' %}" style="color:white;">
+        <div style="line-height:2rem;"> Project <br/>django</div>
+      </a>
       <div style="color:#44B78B;align-self:center;text-align: initial; margin-left:1rem; font-size:.8rem; font-weight: 100">
         The Web framework for perfectionists with deadlines
         <br/>장고 프로젝트 실습! Created by 임은총
       </div>
     </div>
-{##}
-{#    <div style="margin-right: 20px;" style="display:flex;flex-direction: row;">#}
-{#      <a href="{% url 'articleapp:list' %}">#}
-{#        <span>Article</span>#}
-{#      </a>#}
-{#      <div class="nav">Nav2</div>#}
-{#      <div class="nav">Nav3</div>#}
-{#      {% if not user.is_authenticated %}#}
-{#        <a href="{% url 'accountapp:login' %}?next={{ request.path }}">#}
-{#          <div class="nav">로그인</div>#}
-{#        </a>#}
-{#      {% else %}#}
-{#        <a href="{% url 'accountapp:detail' pk=user.pk %}?next={{ request.path }}">#}
-{#          <div class="nav">MyPage</div>#}
-{#        </a>#}
-{#        <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">#}
-{#          <div class="nav">로그아웃</div>#}
-{#        </a>#}
-{#      {% endif %}#}
-{#    </div>#}
+    {##}
+    {#    <div style="margin-right: 20px;" style="display:flex;flex-direction: row;">#}
+    {#      <a href="{% url 'articleapp:list' %}">#}
+    {#        <span>Article</span>#}
+    {#      </a>#}
+    {#      <div class="nav">Nav2</div>#}
+    {#      <div class="nav">Nav3</div>#}
+    {#      {% if not user.is_authenticated %}#}
+    {#        <a href="{% url 'accountapp:login' %}?next={{ request.path }}">#}
+    {#          <div class="nav">로그인</div>#}
+    {#        </a>#}
+    {#      {% else %}#}
+    {#        <a href="{% url 'accountapp:detail' pk=user.pk %}?next={{ request.path }}">#}
+    {#          <div class="nav">MyPage</div>#}
+    {#        </a>#}
+    {#        <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">#}
+    {#          <div class="nav">로그아웃</div>#}
+    {#        </a>#}
+    {#      {% endif %}#}
+    {#    </div>#}
 
-<nav class="navbar navbar-expand-lg" style="background-color: unset; margin-right: 20px;" style="display:flex;flex-direction: row;">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon" style="background-image: url({% static 'img/menu-btn.png' %})"/></span>
-  </button>
-  <div class="collapse navbar-collapse " id="navbarNav" style="background-color: unset;">
-    <ul class="navbar-nav"  style="background-color: unset;">
-      <li class="nav-item" >
-        <a href="{% url 'articleapp:list' %}">
-          <div class="nav">게시글</div>
-        </a>
-      </li>
-    <li class="nav-item">
-          <a href="{% url 'projectapp:list' %}">
-            <div class="nav">게시판</div>
-          </a>
-        </li>
-    <li class="nav-item">
-          <a href="{% url 'subscribeapp:list' %}">
-            <div class="nav">구독한 게시글</div>
-          </a>
-        </li>
-      {% if not user.is_authenticated %}
-        <li class="nav-item">
-          <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
-            <div class="nav">로그인</div>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'accountapp:create' %}?next={{ request.path }}">
-            <div class="nav">회원가입</div>
-          </a>
-        </li>
-      {% else %}
-        <li class="nav-item">
-          <a href="{% url 'accountapp:detail' pk=user.pk %}?next={{ request.path }}">
-            <div class="nav">MyPage</div>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
-            <div class="nav">로그아웃</div>
-          </a>
-        </li>
-      {% endif %}
+    <nav class="navbar navbar-expand-lg" style="background-color: unset; margin-right: 20px;"
+         style="display:flex;flex-direction: row;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="background-image: url({% static 'img/menu-btn.png' %})"/></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav" style="background-color: unset;">
+        <ul class="navbar-nav" style="background-color: unset;">
+          <li class="nav-item">
+            <a href="{% url 'articleapp:list' %}">
+              <div class="nav">게시글</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'projectapp:list' %}">
+              <div class="nav">게시판</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'subscribeapp:list' %}">
+              <div class="nav">구독한 게시글</div>
+            </a>
+          </li>
+          {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
+                <div class="nav">로그인</div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'accountapp:create' %}?next={{ request.path }}">
+                <div class="nav">회원가입</div>
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{% url 'accountapp:detail' pk=user.pk %}?next={{ request.path }}">
+                <div class="nav">MyPage</div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
+                <div class="nav">로그아웃</div>
+              </a>
+            </li>
+          {% endif %}
 
-    </ul>
-  </div>
-</nav>
+        </ul>
+      </div>
+    </nav>
 
   </div>
 </div>
